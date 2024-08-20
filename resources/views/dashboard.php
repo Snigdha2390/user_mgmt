@@ -17,7 +17,7 @@
     <div class="registration-form">
         <form action="{{url('/')}}/register" method="post">
           @csrf   
-          <h3 class="pt-3 font-weight-bold">Registration</h3>
+          <h3 class="pt-3 font-weight-bold">Registration Form</h3>
             <div class="form-group">
               <input type="text" class="form-control item" id="title" name="title" placeholder="Name" value="{{old('title')}}" class="@error('title') is-invalid @enderror">
               @error('title')

@@ -115,34 +115,25 @@ a[target='_blank']{
       <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
           <div class="panel border bg-white">
               <div class="panel-heading">
-                  <h3 class="pt-3 font-weight-bold">Login</h3>
+                  <h3 class="pt-3 font-weight-bold">Forgot Password</h3>
                   @if(session('message'))
                     <div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                     {{session('message')}}</div>
                   @endif
               </div>
               <div class="panel-body p-3">
-                  <form action="{{url('/')}}/login" method="POST">
+                  <form action="{{url('/')}}/newPassword" method="POST">
                     @csrf   
                       <div class="form-group py-2">
                           <div class="input-field">
                               <span class="far fa-user p-2"></span>
-                              <input type="text" name="un" placeholder="Enter Username" required>
+                              <input type="text" placeholder="Enter Username" name="email" required>
+
+
                           </div>
                       </div>
-                      <div class="form-group py-1 pb-2">
-                          <div class="input-field">
-                              <span class="fas fa-lock px-2"></span>
-                              <input type="password" placeholder="Enter your Password"  name="pwd" required>
-                              <button class="btn bg-white text-muted">
-                                  <span class="far fa-eye-slash"></span>
-                              </button>
-                          </div>
-                      </div>
-                      <div class="form-inline">
-                          <a href="{{'forgot'}}" id="forgot" class="font-weight-bold">Forgot password?</a>
-                      </div>
-                      <button class="btn btn-primary btn-block mt-3">Login</button>
+                      <button class="btn btn-primary btn-block mt-3">Submit</button>
+
 
                       <div class="text-center pt-4 text-muted">Don't have an account? <a href="{{'register'}}">Register</a>
                       </div>
