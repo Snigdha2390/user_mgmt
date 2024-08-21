@@ -22,7 +22,7 @@ Route::prefix('/admin')->group(function () {
     Route::get('/-login', [AuthController::class, 'getLogin'])->name('getLogin');
     Route::post('/-login', [AuthController::class, 'postLogin'])->name('postLogin');
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard')->middleware('isAdmin');
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard')->middleware('isAdmin');
+    //Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard')->middleware('isAdmin');
 });
 
 Route::post('/login', [UserController::class, 'login'])->name('user.login');
