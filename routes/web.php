@@ -18,9 +18,12 @@ Route::get('/', function () {
 //Route::get('admin-page', function () {
  //   return view('admin.dashboard');
 //});
-Route::get('/admin-login', [AuthController::class, 'getLogin'])->name('getLogin');
-Route::post('/admin-login', [AuthController::class, 'postLogin'])->name('postLogin');
-Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('dashboard')->middleware('isAdmin');
+Route::prefix('/admin')->group(function () {
+    Route::get('/-login', [AuthController::class, 'getLogin'])->name('getLogin');
+    Route::post('/-login', [AuthController::class, 'postLogin'])->name('postLogin');
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard')->middleware('isAdmin');
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard')->middleware('isAdmin');
+});
 
 Route::post('/login', [UserController::class, 'login'])->name('user.login');
 //Route::post('/login-admin', [AdminController::class, 'login'])->name('admin.login');
