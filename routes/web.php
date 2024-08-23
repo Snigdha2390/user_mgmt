@@ -18,12 +18,21 @@ Route::get('/', function () {
 //Route::get('admin-page', function () {
  //   return view('admin.dashboard');
 //});
-Route::prefix('/admin')->group(function () {
-    Route::get('/-login', [AuthController::class, 'getLogin'])->name('getLogin');
-    Route::post('/-login', [AuthController::class, 'postLogin'])->name('postLogin');
+//Route::prefix('/admin')->group(function () {
+    Route::get('/admin-login', [AuthController::class, 'getLogin'])->name('getLogin');
+    Route::post('/admin-login', [AuthController::class, 'postLogin'])->name('postLogin');
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('dashboard')->middleware('isAdmin');
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard')->middleware('isAdmin');
-    //Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard')->middleware('isAdmin');
-});
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    
+    Route::get('/userlist', [AdminController::class, 'list'])->name('list');
+    Route::get('/admin/edit', [AdminController::class, 'editUser'])->name('editUser')->middleware('isAdmin');
+    //Route::get('admin/deleteUser', [AdminController::class, 'deleteUser'])->name('deleteUser')->middleware('isAdmin');
+    Route::get('/deleteUser/{user}', [AdminController::class, 'deleteUser'])->name('user.delete');
+    Route::get('/editUser/{user}', [AdminController::class, 'editUser'])->name('user.edit');
+    Route::post('/edituser', [AdminController::class, 'userEdit'])->name('user.update');
+
+//});
 
 Route::post('/login', [UserController::class, 'login'])->name('user.login');
 //Route::post('/login-admin', [AdminController::class, 'login'])->name('admin.login');
